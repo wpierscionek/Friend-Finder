@@ -1,3 +1,28 @@
+h1 {
+    color: black;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+    width: 100%;
+}
+
 .container {
-	width: 50%;
+	text-align: center;
+    margin: 50px auto;
+    background-color: rgba(232, 232, 232, 0.52);
+    box-shadow: 10px 10px 5px #888;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.chosen-select {
+    width: 50%;
+}
+
+.panel-body {
+    
 }

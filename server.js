@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
+//using and accessing public folder to load images/css/etc..
+
+staticContentFolder = __dirname + '/app/public';
+app.use(express.static(staticContentFolder));
 
 //points our server to a map of routes available in our application 
 
