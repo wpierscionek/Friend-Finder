@@ -184,16 +184,18 @@ $('.submit').on('click', function() {
     var newFriend = {
         name: $('#reserve_name').val().trim(),
         photo: $('#reserve_img').val().trim(),
-        scores: $('#q1').val(),
+        scores: [
+        $('#q1').val(),
         $('#q2').val(),
         $('#q3').val(),
         $('#q4').val(),
         $('#q5').val(),
-        questionSix: $('#q6').val(),
-        questionSeven: $('#q7').val(),
-        questionEight: $('#q8').val(),
-        questionNine: $('#q9').val(),
-        questionTen: $('#q10').val()
+        $('#q6').val(),
+        $('#q7').val(),
+        $('#q8').val(),
+        $('#q9').val(),
+        $('#q10').val()
+        ]
     };
     console.log(newFriend);
 
