@@ -8,10 +8,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <!-- Chosen -->
+    <!-- Chosen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-    
     <link rel="stylesheet" type="text/css" href="css/survey.css">
 </head>
 
@@ -152,7 +151,7 @@
                 </div>
                 <div class="modal-body">
                     <h2 id="matchName"></h2>
-                    <img id="matchImg" src="" alt="">
+                    <img id="matchImg" src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/10639576_1108687602498556_8040003880846972591_n.jpg?oh=cbee5b68ce9afd2df2f80b9b1837e775&oe=57A4A444" alt="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -162,19 +161,25 @@
     </div>
 </body>
 <script type="text/javascript">
-
-
-    // Chosen CSS
-    var config = {
-      '.chosen-select'           : {},
-      '.chosen-select-deselect'  : {allow_single_deselect:true},
-      '.chosen-select-no-single' : {disable_search_threshold:10},
-      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-      '.chosen-select-width'     : {width:"95%"}
+// Chosen CSS
+var config = {
+    '.chosen-select': {},
+    '.chosen-select-deselect': {
+        allow_single_deselect: true
+    },
+    '.chosen-select-no-single': {
+        disable_search_threshold: 10
+    },
+    '.chosen-select-no-results': {
+        no_results_text: 'Oops, nothing found!'
+    },
+    '.chosen-select-width': {
+        width: "95%"
     }
-    for (var selector in config) {
-      $(selector).chosen(config[selector]);
-    }
+}
+for (var selector in config) {
+    $(selector).chosen(config[selector]);
+}
 //we need to grab all the data that user entered, when clicked on submit
 
 $('.submit').on('click', function() {
@@ -185,55 +190,62 @@ $('.submit').on('click', function() {
         name: $('#reserve_name').val().trim(),
         photo: $('#reserve_img').val().trim(),
         scores: [
-        $('#q1').val(),
-        $('#q2').val(),
-        $('#q3').val(),
-        $('#q4').val(),
-        $('#q5').val(),
-        $('#q6').val(),
-        $('#q7').val(),
-        $('#q8').val(),
-        $('#q9').val(),
-        $('#q10').val()
+            $('#q1').val(),
+            $('#q2').val(),
+            $('#q3').val(),
+            $('#q4').val(),
+            $('#q5').val(),
+            $('#q6').val(),
+            $('#q7').val(),
+            $('#q8').val(),
+            $('#q9').val(),
+            $('#q10').val()
         ]
     };
     console.log(newFriend);
 
     var currentURL = window.location.origin; // using this because url will change
 
-    $.post(currentURL + '/api/survey', newFriend, function() {
-        alert("submitted");
+    $.post(currentURL + '/api/survey', newFriend, function(usersData) {
+        $("#matchName").text(usersData.name);
+        $('#matchImg').attr("src", usersData.photo)
+        $("#resultsModal").modal('toggle');
     })
 
-    $("#resultsModal").modal('toggle');
 
     return false;
 })
 
-function runTableQuery() {
+// function runTableQuery() {
 
-    var currentURL = window.location.origin;
+//     var currentURL = window.location.origin;
 
-    $.ajax({
-            url: currentURL + '/api/survey',
-            method: 'GET'
-        })
-        .done(function(usersData) {
-            console.log('----------------------------------');
-            console.log('URL ' + currentURL + '/api/survey');
-            console.log('----------------------------------');
+//     $.ajax({
+//             url: currentURL + '/api/survey',
+//             method: 'GET'
+//         })
+//         .done(function(usersData) {
+//             console.log('----------------------------------');
+//             console.log('URL ' + currentURL + '/api/survey');
+//             console.log('----------------------------------');
 
-            console.log('----------------------------------');
-            console.log(usersData);
-            console.log('----------------------------------');
+//             console.log('----------------------------------');
+//             console.log(usersData);
+//             console.log('----------------------------------');
 
-            for( var i = 0; i < usersData.length; i++){
-            	console.log(usersData[i].questionOne);
-            	console.log(usersData[i].questionTwo);
-            }
-        });
-}
-runTableQuery();
+//             for (var i = 0; i < usersData.length; i++) {
+
+//                 var sum = usersData[i].scores.reduce(add, 0);
+
+//                 function add(a, b) {
+//                     return a + b;
+//                 }
+//                 console.log(sum);
+
+//             }
+//         });
+// }
+// runTableQuery();
 </script>
 
 </html>

@@ -23,6 +23,7 @@ module.exports = function(app){
 	//Below API POST REQUESTS
 	app.post('/api/survey', function(request, response){
 		usersData.push(request);
+		response.json(true); // KEY LINE
 	})
 }
 

@@ -18,12 +18,12 @@ var friendsArray = [{
     name: "Wojtek",
     photo: "blank",
     scores: [
+        2,
         1,
         1,
         1,
         1,
-        1,
-        1,
+        4,
         1,
         1,
         1
