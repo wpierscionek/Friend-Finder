@@ -1,14 +1,32 @@
+// We need to include the path package to get the correct file path for our html
+
 var path = require('path');
 
-module.exports = function(app) {
+// ===============================================================================
+// ROUTING
+// ===============================================================================
 
-    app.get('/quiz', function(request, response) {
-        response.sendFile(path.join(__dirname + '/../public/survey.html'));
-    });
+//need to make routing available to rest of the application
 
-    // If no matching route is found default to home
-    app.use(function(request, response) {
-        response.sendFile(path.join(__dirname + '/../public/home.html'));
-    });
+module.exports = function(app){
 
-};
+	// HTML GET REQUESTS
+	// below code handles when users "visit" a page
+	// in each of the below cases the user is shown an HTML page of content
+
+	app.get('/home', function(request, response){
+		response.sendFile(path.join(__dirname + '/../public/index.html'));
+	});
+	app.get('/survey',function(request, response){
+		response.sendFile(path.join(__dirname + '/../public/survey.html'));
+	});
+
+	// if no matching route is found set default
+
+	app.use(function(request, response){
+		response.sendFile(path.join(__dirname + '/../public/index.html'));
+	});
+}
+
+// sendFile is for serving html 
+// 
