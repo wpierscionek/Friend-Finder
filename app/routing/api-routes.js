@@ -37,11 +37,6 @@ module.exports = function(app) {
                 }
                 console.log(sum);
 
-                // response.json({
-                // 	'name':
-                // 	'photo':
-                // })
-
         };
 
     })
