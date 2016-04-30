@@ -206,9 +206,10 @@ $('.submit').on('click', function() {
 
     var currentURL = window.location.origin; // using this because url will change
 
-    $.post(currentURL + '/api/survey', newFriend, function(usersData) {
-        $("#matchName").text(usersData.name);
-        $('#matchImg').attr("src", usersData.photo)
+    $.post(currentURL + '/api/survey', newFriend, function(data) {
+        console.log(data.name, data.photo)
+        $("#matchName").text(data.name);
+        $('#matchImg').attr("src", data.photo)
         $("#resultsModal").modal('toggle');
     })
 
