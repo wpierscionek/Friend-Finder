@@ -1,9 +1,9 @@
 //creating an array with duppy "friend" so we know it works
 
 var friendsArray = [{
-    name: "Wojtek",
-    photo: "blank",
-    scores: [
+    'name': "Wojtek",
+    'photo': "blank",
+    'scores': [
         1,
         1,
         1,
@@ -15,9 +15,9 @@ var friendsArray = [{
         1
     ]
 }, {
-    name: "Wojtek",
-    photo: "blank",
-    scores: [
+    'name': "Wojtek",
+    'photo': "blank",
+    'scores': [
         2,
         1,
         1,

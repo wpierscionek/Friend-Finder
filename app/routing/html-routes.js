@@ -27,6 +27,3 @@ module.exports = function(app){
 		response.sendFile(path.join(__dirname + '/../public/index.html'));
 	});
 }
-
-// sendFile is for serving html 
-// 

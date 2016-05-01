@@ -24,20 +24,23 @@ module.exports = function(app) {
     app.post('/api/survey', function(request, response) {
     	
     	usersData.push(request.body);
+           response.json(true); // KEY LINE
 
-        // console.log(request.body.name);
-        // console.log(request.body.scores.length);
+        console.log(request.body.name);
+        console.log(request.body.scores.length);
 
-        for (var i = 0; i < usersData.length; i++) {
+        // for (var i = 0; i < usersData.length; i++) {
 
-                var sum = usersData[i].scores.reduce(addScore);
+        //         var sum = usersData[i].scores.reduce(addScore);
 
-                function addScore(a, b) {
-                    return a + b;
-                }
-                console.log(sum);
+        //         function addScore(a, b) {
+        //             return a + b;
+        //         }
+        //         console.log(sum);
 
-        };
+             
+
+        // };
 
     })
 }
