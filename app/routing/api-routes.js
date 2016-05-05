@@ -16,31 +16,13 @@ module.exports = function(app) {
     // handles when user "visit" a page
     // In each of the below cases when a user visits a link
 
-    // app.get('/api/survey', function(request, response) {
-    //     response.json(usersData);
-    // });
+    app.get('/api/survey', function(request, response) {
+        response.json(usersData);
+    });
 
     // Below API POST REQUESTS
     app.post('/api/survey', function(request, response) {
-    	
-    	usersData.push(request.body);
-           response.json(true); // KEY LINE
-
-        console.log(request.body.name);
-        console.log(request.body.scores.length);
-
-        // for (var i = 0; i < usersData.length; i++) {
-
-        //         var sum = usersData[i].scores.reduce(addScore);
-
-        //         function addScore(a, b) {
-        //             return a + b;
-        //         }
-        //         console.log(sum);
-
-             
-
-        // };
+        usersData.push(request.body);
 
     })
 }

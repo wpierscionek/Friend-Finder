@@ -154,70 +154,13 @@
                     <img id="matchImg" alt="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <p><a class="btn btn-primary btn-lg" href="/home" role="button data-dismiss="modal"">Close!</a></p>
+                    <!-- <button type="button" href="/home" class="btn btn-default" >Close</button> -->
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
-<script type="text/javascript">
-// Chosen CSS
-var config = {
-    '.chosen-select': {},
-    '.chosen-select-deselect': {
-        allow_single_deselect: true
-    },
-    '.chosen-select-no-single': {
-        disable_search_threshold: 10
-    },
-    '.chosen-select-no-results': {
-        no_results_text: 'Oops, nothing found!'
-    },
-    '.chosen-select-width': {
-        width: "95%"
-    }
-}
-for (var selector in config) {
-    $(selector).chosen(config[selector]);
-}
-//we need to grab all the data that user entered, when clicked on submit
-var currentURL = window.location.origin;
-$('.submit').on('click', function() {
-
-    //grabbing form elements and making an object out off it
-
-    var newFriend = {
-        'name': $('#reserve_name').val().trim(),
-        'photo': $('#reserve_img').val().trim(),
-        'scores': [
-            $('#q1').val(),
-            $('#q2').val(),
-            $('#q3').val(),
-            $('#q4').val(),
-            $('#q5').val(),
-            $('#q6').val(),
-            $('#q7').val(),
-            $('#q8').val(),
-            $('#q9').val(),
-            $('#q10').val()
-        ]
-    };
-    console.log(newFriend);
-
-     // using this because url will change
-
-    $.post(currentURL + '/api/survey', newFriend, function(data) {
-        
-        console.log(data.name, data.photo)
-
-        $('#matchName').text(data.name);
-        $('#matchImg').attr('src', data.photo)
-        $('#resultsModal').modal('toggle');
-    })
-
-
-    return false;
-})
-</script>
 
 </html>

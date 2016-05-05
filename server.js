@@ -7,7 +7,7 @@ var path = require('path'); // global package
 // setting for basic express server
 
 var app = express(); // creating express server
-var PORT = process.env.PORT || 80; //if no other port will be specified it will use port 80
+var PORT = process.env.PORT || 8080; //if no other port will be specified it will use port 80
 
 // always copy and paste the code below
 // bodyParser makes it easy to explain to server what data format is used?
